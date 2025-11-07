@@ -1,46 +1,60 @@
-# Astro Starter Kit: Basics
+# JARC - Portfolio Personal
 
-```sh
-npm create astro@latest -- --template basics
-```
+Portfolio moderno y minimalista construido con Astro 5.15.3 + TypeScript.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## 🚀 Características
 
-## 🚀 Project Structure
+- **Diseño moderno y minimalista** - Interfaz limpia sin header tradicional
+- **Hero section optimizado** - Compacto para mostrar proyectos rápidamente
+- **Responsive design** - Adaptado para todos los dispositivos
+- **TypeScript** - Tipado estático para mejor desarrollo
+- **Astro 5.15.3** - Framework moderno para sitios estáticos
+- **CSS Variables** - Sistema de diseño consistente
 
-Inside of your Astro project, you'll see the following folders and files:
+## 📁 Estructura del Proyecto
 
 ```text
 /
 ├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
+│   ├── images/
+│   └── projects/
+├── src/
+│   ├── components/
+│   │   ├── ContactForm.astro
+│   │   ├── Footer.astro
+│   │   └── ProjectCard.astro
+│   ├── data/
+│   │   ├── projects.ts
+│   │   └── services.ts
+│   ├── layouts/
+│   │   └── Layout.astro
+│   ├── pages/
+│   │   └── index.astro
+│   └── styles/
+│       └── global.css
 └── package.json
 ```
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+## 🛠️ Comandos
 
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
+| Comando                   | Descripción                                      |
 | :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+| `npm install`             | Instala dependencias                             |
+| `npm run dev`             | Servidor de desarrollo en `localhost:4322`      |
+| `npm run build`           | Construye el sitio para producción              |
+| `npm run preview`         | Vista previa del build local                     |
 
-## 👀 Want to learn more?
+## 🎨 Tecnologías Utilizadas
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+- **Astro** - Framework principal
+- **TypeScript** - Tipado estático
+- **CSS Variables** - Sistema de diseño
+- **Responsive Design** - Adaptabilidad móvil
+
+## 📄 Documentación
+
+Para más detalles sobre el desarrollo, consulta `DESARROLLO_PORTFOLIO.md`
+
+---
+
+**Desarrollado por Justin Arcila (JARC)** - Desarrollador Full Stack Senior
