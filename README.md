@@ -57,4 +57,4 @@ Para más detalles sobre el desarrollo, consulta `DESARROLLO_PORTFOLIO.md`
 
 ---
 
-**Desarrollado por Justin Arcila (JARC)** - Desarrollador Full Stack Senior
+**Desarrollado por Justin Romaña (JARC)** - Desarrollador Full Stack Senior
