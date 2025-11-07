@@ -1,0 +1,373 @@
+---
+
+---
+
+<div class="contact-form-container reveal">
+  <div class="contact-form-header">
+    <h3 class="form-title">¿Listo para hacer crecer tu negocio?</h3>
+    <p class="form-subtitle">
+      Cuéntame sobre tu proyecto y te responderé en menos de 24 horas con una propuesta personalizada.
+    </p>
+  </div>
+  
+  <form class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+    <div class="form-row">
+      <div class="form-group">
+        <label for="name" class="form-label">Nombre completo *</label>
+        <input 
+          type="text" 
+          id="name" 
+          name="name" 
+          class="form-input" 
+          required 
+          placeholder="Tu nombre"
+        />
+      </div>
+      
+      <div class="form-group">
+        <label for="email" class="form-label">Email *</label>
+        <input 
+          type="email" 
+          id="email" 
+          name="email" 
+          class="form-input" 
+          required 
+          placeholder="tu@email.com"
+        />
+      </div>
+    </div>
+    
+    <div class="form-row">
+      <div class="form-group">
+        <label for="company" class="form-label">Empresa</label>
+        <input 
+          type="text" 
+          id="company" 
+          name="company" 
+          class="form-input" 
+          placeholder="Nombre de tu empresa"
+        />
+      </div>
+      
+      <div class="form-group">
+        <label for="budget" class="form-label">Presupuesto estimado</label>
+        <select id="budget" name="budget" class="form-select">
+          <option value="">Selecciona un rango</option>
+          <option value="$500-$1,500">$500 - $1,500</option>
+          <option value="$1,500-$3,000">$1,500 - $3,000</option>
+          <option value="$3,000-$5,000">$3,000 - $5,000</option>
+          <option value="$5,000+">$5,000+</option>
+        </select>
+      </div>
+    </div>
+    
+    <div class="form-group">
+      <label for="project-type" class="form-label">Tipo de proyecto *</label>
+      <select id="project-type" name="project-type" class="form-select" required>
+        <option value="">¿Qué necesitas?</option>
+        <option value="portfolio">Portafolio Personal</option>
+        <option value="business">Sitio Web de Negocio</option>
+        <option value="ecommerce">Tienda Online</option>
+        <option value="webapp">Aplicación Web</option>
+        <option value="redesign">Rediseño de Sitio Existente</option>
+        <option value="other">Otro</option>
+      </select>
+    </div>
+    
+    <div class="form-group">
+      <label for="message" class="form-label">Cuéntame sobre tu proyecto *</label>
+      <textarea 
+        id="message" 
+        name="message" 
+        class="form-textarea" 
+        rows="5" 
+        required 
+        placeholder="Describe tu proyecto, objetivos, y cualquier requisito específico..."
+      ></textarea>
+    </div>
+    
+    <div class="form-group">
+      <label for="timeline" class="form-label">¿Cuándo necesitas el proyecto terminado?</label>
+      <select id="timeline" name="timeline" class="form-select">
+        <option value="">Selecciona un plazo</option>
+        <option value="asap">Lo antes posible</option>
+        <option value="1-month">En 1 mes</option>
+        <option value="2-3-months">En 2-3 meses</option>
+        <option value="flexible">Flexible</option>
+      </select>
+    </div>
+    
+    <div class="form-actions">
+      <button type="submit" class="btn btn-primary form-submit">
+        <span class="submit-text">Enviar Mensaje</span>
+        <span class="submit-loading" style="display: none;">Enviando...</span>
+      </button>
+      
+      <p class="form-note">
+        <span class="note-icon">🔒</span>
+        Tu información está segura. Te responderé en menos de 24 horas.
+      </p>
+    </div>
+  </form>
+  
+  <div class="contact-alternatives">
+    <div class="alternative-divider">
+      <span>O también puedes</span>
+    </div>
+    
+    <div class="contact-links">
+      <a href="mailto:justin@jarc.xyz" class="contact-link">
+        <span class="link-icon">📧</span>
+        <span class="link-text">
+          <strong>Enviar un email</strong>
+          <small>justin@jarc.xyz</small>
+        </span>
+      </a>
+      
+      <a href="https://linkedin.com/in/justinarc" class="contact-link" target="_blank" rel="noopener noreferrer">
+        <span class="link-icon">💼</span>
+        <span class="link-text">
+          <strong>Conectar en LinkedIn</strong>
+          <small>Respuesta rápida</small>
+        </span>
+      </a>
+      
+      <a href="https://wa.me/50765551234" class="contact-link" target="_blank" rel="noopener noreferrer">
+        <span class="link-icon">💬</span>
+        <span class="link-text">
+          <strong>WhatsApp</strong>
+          <small>+507 6555-1234</small>
+        </span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<style>
+  .contact-form-container {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .contact-form-header {
+    text-align: center;
+    margin-bottom: var(--space-8);
+  }
+  
+  .form-title {
+    font-size: var(--text-3xl);
+    font-weight: 700;
+    margin-bottom: var(--space-4);
+    color: var(--color-text-primary);
+  }
+  
+  .form-subtitle {
+    font-size: var(--text-lg);
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  .contact-form {
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: var(--space-8);
+    margin-bottom: var(--space-8);
+  }
+  
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-4);
+    margin-bottom: var(--space-5);
+  }
+  
+  .form-group {
+    margin-bottom: var(--space-5);
+  }
+  
+  .form-label {
+    display: block;
+    font-weight: 500;
+    color: var(--color-text-primary);
+    margin-bottom: var(--space-2);
+    font-size: var(--text-sm);
+  }
+  
+  .form-input,
+  .form-select,
+  .form-textarea {
+    width: 100%;
+    padding: var(--space-3) var(--space-4);
+    background: var(--color-bg-tertiary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    color: var(--color-text-primary);
+    font-family: var(--font-secondary);
+    font-size: var(--text-base);
+    transition: all var(--transition-fast);
+  }
+  
+  .form-input:focus,
+  .form-select:focus,
+  .form-textarea:focus {
+    outline: none;
+    border-color: var(--color-accent);
+    box-shadow: 0 0 0 3px rgba(58, 125, 255, 0.1);
+  }
+  
+  .form-input::placeholder,
+  .form-textarea::placeholder {
+    color: var(--color-text-muted);
+  }
+  
+  .form-textarea {
+    resize: vertical;
+    min-height: 120px;
+  }
+  
+  .form-actions {
+    text-align: center;
+    margin-top: var(--space-8);
+  }
+  
+  .form-submit {
+    padding: var(--space-4) var(--space-8);
+    font-size: var(--text-lg);
+    font-weight: 600;
+    min-width: 200px;
+    position: relative;
+  }
+  
+  .form-note {
+    margin-top: var(--space-4);
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+  }
+  
+  .contact-alternatives {
+    margin-top: var(--space-12);
+  }
+  
+  .alternative-divider {
+    text-align: center;
+    position: relative;
+    margin-bottom: var(--space-8);
+  }
+  
+  .alternative-divider::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: var(--color-border);
+    transform: translateY(-50%);
+  }
+  
+  .alternative-divider span {
+    background: var(--color-bg-primary);
+    padding: 0 var(--space-4);
+    color: var(--color-text-muted);
+    font-size: var(--text-sm);
+    position: relative;
+    z-index: 1;
+  }
+  
+  .contact-links {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--space-4);
+  }
+  
+  .contact-link {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+    padding: var(--space-4);
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    text-decoration: none;
+    transition: all var(--transition-normal);
+  }
+  
+  .contact-link:hover {
+    border-color: var(--color-accent);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+  }
+  
+  .link-icon {
+    font-size: var(--text-2xl);
+    flex-shrink: 0;
+  }
+  
+  .link-text {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+  }
+  
+  .link-text strong {
+    color: var(--color-text-primary);
+    font-weight: 600;
+  }
+  
+  .link-text small {
+    color: var(--color-text-muted);
+    font-size: var(--text-sm);
+  }
+  
+  /* Mobile styles */
+  @media (max-width: 768px) {
+    .contact-form {
+      padding: var(--space-6);
+    }
+    
+    .form-row {
+      grid-template-columns: 1fr;
+      gap: 0;
+    }
+    
+    .form-title {
+      font-size: var(--text-2xl);
+    }
+    
+    .form-subtitle {
+      font-size: var(--text-base);
+    }
+    
+    .contact-links {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const form = document.querySelector('.contact-form');
+    const submitButton = form?.querySelector('.form-submit');
+    const submitText = submitButton?.querySelector('.submit-text');
+    const submitLoading = submitButton?.querySelector('.submit-loading');
+    
+    form?.addEventListener('submit', (e) => {
+      // Show loading state
+      if (submitButton && submitText && submitLoading) {
+        submitButton.disabled = true;
+        submitText.style.display = 'none';
+        submitLoading.style.display = 'inline';
+      }
+      
+      // Form will be submitted normally to Formspree
+      // You can add additional handling here if needed
+    });
+  });
+</script>

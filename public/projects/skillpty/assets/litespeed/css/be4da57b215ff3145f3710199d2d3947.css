@@ -1,0 +1,13 @@
+.elementor-2135 .elementor-element.elementor-element-70fc1b5:not(.elementor-motion-effects-element-type-background), .elementor-2135 .elementor-element.elementor-element-70fc1b5>.elementor-motion-effects-container>.elementor-motion-effects-layer {background-color: #000;background-image: url("https://slyrzzz.github.io/skillpty/assets/uploads/2022/10/slider68.png");background-position: top center;background-repeat: repeat-y;}
+.elementor-2135 .elementor-element.elementor-element-70fc1b5 {transition: background .3s,border .3s,border-radius .3s,box-shadow .3s;padding: 50px 0 50px 0;}
+.elementor-2135 .elementor-element.elementor-element-70fc1b5>.elementor-background-overlay {transition: background .3s,border-radius .3s,opacity .3s;}
+.elementor-2135 .elementor-element.elementor-element-7573de0>.elementor-widget-wrap>.elementor-widget:not(.elementor-widget__width-auto):not(.elementor-widget__width-initial):not(:last-child):not(.elementor-absolute) {margin-bottom: 15px;}
+.elementor-2135 .elementor-element.elementor-element-aee23bc .elementor-heading-title {font-size: 32px;color: #fff;}
+.elementor-2135 .elementor-element.elementor-element-37b1057 {color: #222;}
+.elementor-2135 .elementor-element.elementor-element-4411fc8 .btn-submit {background-color: #000;color: #fff;border-style: solid;border-width: 2px 2px 2px 2px;border-color: #000;}
+.elementor-2135 .elementor-element.elementor-element-4411fc8 .btn-submit:hover, .elementor-2135 .elementor-element.elementor-element-4411fc8 .btn-submit:focus {background-color: #fff;color: #000;border-color: #000;}
+.elementor-2135 .elementor-element.elementor-element-4411fc8 {width: var(--container-widget-width,850px);max-width: 850px;--container-widget-width: 850px;--container-widget-flex-grow: 0;}
+@media (max-width:1024px) {.elementor-2135 .elementor-element.elementor-element-70fc1b5 {padding: 25px 0 20px 0;}
+	.elementor-2135 .elementor-element.elementor-element-aee23bc .elementor-heading-title {font-size: 25px;}}
+@media (max-width:477px) {.elementor-2135 .elementor-element.elementor-element-70fc1b5 {padding: 20px 0 15px 0;}
+	.elementor-2135 .elementor-element.elementor-element-aee23bc .elementor-heading-title {font-size: 23px;}}

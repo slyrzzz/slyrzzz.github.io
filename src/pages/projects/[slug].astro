@@ -1,0 +1,519 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { getProjectBySlug } from '../../data/projects';
+
+export async function getStaticPaths() {
+  return [
+    {params: {slug: 'skillpty'}},
+    {params: {slug: 'guder'}},
+    {params: {slug: 'vallasgo'}},
+  ];
+}
+
+const { slug } = Astro.params;
+const project = getProjectBySlug(slug!);
+
+if (!project) {
+  return Astro.redirect('/404');
+}
+---
+
+<Layout title={`${project.title} - Caso de Estudio | JARC Portfolio`} description={project.description}>
+  <Header />
+  
+  <main class="project-detail">
+    <!-- Hero Section -->
+    <section class="project-hero">
+      <div class="container">
+        <div class="project-hero-content reveal">
+          <div class="project-breadcrumb">
+            <a href="/" class="breadcrumb-link">Inicio</a>
+            <span class="breadcrumb-separator">→</span>
+            <a href="/#proyectos" class="breadcrumb-link">Proyectos</a>
+            <span class="breadcrumb-separator">→</span>
+            <span class="breadcrumb-current">{project.title}</span>
+          </div>
+          
+          <div class="project-header">
+            <div class="project-meta">
+              <span class="project-category">{project.category}</span>
+              <span class="project-year">{project.year}</span>
+              {project.client && <span class="project-client">Cliente: {project.client}</span>}
+            </div>
+            
+            <h1 class="project-title">{project.title}</h1>
+            <p class="project-description">{project.description}</p>
+            
+            <div class="project-actions">
+              <a href={`/projects/${project.slug}/live`} class="btn btn-primary" target="_blank" rel="noopener noreferrer">
+                Ver Sitio en Vivo
+              </a>
+              {project.githubUrl && (
+                <a href={project.githubUrl} class="btn btn-secondary" target="_blank" rel="noopener noreferrer">
+                  Ver Código
+                </a>
+              )}
+            </div>
+          </div>
+          
+          <div class="project-visual">
+            <div class="project-image-container">
+              <img src={project.image} alt={project.title} class="project-image" />
+              <div class="image-overlay">
+                <a href={`/projects/${project.slug}/live`} class="overlay-link" target="_blank" rel="noopener noreferrer">
+                  <span class="overlay-icon">🔗</span>
+                  <span class="overlay-text">Ver Sitio</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tech Stack -->
+    <section class="tech-stack section">
+      <div class="container">
+        <div class="stack-content reveal">
+          <h3 class="stack-title">Tecnologías Utilizadas</h3>
+          <div class="stack-grid">
+            {project.stack.map((tech) => (
+              <span class="tech-item">{tech}</span>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Project Details -->
+    <section class="project-details section">
+      <div class="container">
+        <div class="details-grid">
+          <div class="detail-section reveal">
+            <h3 class="detail-title">El Desafío</h3>
+            <p class="detail-content">{project.challenge}</p>
+          </div>
+          
+          <div class="detail-section reveal">
+            <h3 class="detail-title">La Solución</h3>
+            <p class="detail-content">{project.solution}</p>
+          </div>
+          
+          <div class="detail-section reveal">
+            <h3 class="detail-title">Resultados Clave</h3>
+            <ul class="results-list">
+              {project.results.map((result) => (
+                <li class="result-item">
+                  <span class="result-check">✓</span>
+                  {result}
+                </li>
+              ))}
+            </ul>
+          </div>
+          
+          {project.testimonial && (
+            <div class="detail-section testimonial-section reveal">
+              <h3 class="detail-title">Testimonio del Cliente</h3>
+              <blockquote class="testimonial">
+                <p class="testimonial-text">"{project.testimonial.text}"</p>
+                <cite class="testimonial-author">
+                  <strong>{project.testimonial.author}</strong>
+                  <span class="author-role">{project.testimonial.position}</span>
+                  <span class="author-company">{project.testimonial.company}</span>
+                </cite>
+              </blockquote>
+            </div>
+          )}
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="project-cta section">
+      <div class="container">
+        <div class="cta-content reveal">
+          <h2 class="cta-title">¿Te gusta lo que ves?</h2>
+          <p class="cta-description">
+            Si este proyecto te inspiró, hablemos sobre cómo puedo ayudarte a crear 
+            algo igual de impactante para tu negocio.
+          </p>
+          <div class="cta-actions">
+            <a href="/#contacto" class="btn btn-primary">
+              Empezar mi proyecto
+            </a>
+            <a href="/#proyectos" class="btn btn-secondary">
+              Ver más proyectos
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  
+  <Footer />
+</Layout>
+
+<style>
+  .project-detail {
+    padding-top: 70px;
+  }
+  
+  /* Hero Section */
+  .project-hero {
+    background: linear-gradient(135deg, var(--color-bg-primary) 0%, var(--color-bg-secondary) 100%);
+    padding: var(--space-20) 0;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .project-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 30% 70%, rgba(58, 125, 255, 0.1) 0%, transparent 50%);
+    pointer-events: none;
+  }
+  
+  .project-hero-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-12);
+    align-items: center;
+    position: relative;
+    z-index: 1;
+  }
+  
+  .project-breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    margin-bottom: var(--space-6);
+    font-size: var(--text-sm);
+  }
+  
+  .breadcrumb-link {
+    color: var(--color-text-secondary);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+  }
+  
+  .breadcrumb-link:hover {
+    color: var(--color-accent);
+  }
+  
+  .breadcrumb-separator {
+    color: var(--color-text-muted);
+  }
+  
+  .breadcrumb-current {
+    color: var(--color-text-primary);
+    font-weight: 500;
+  }
+  
+  .project-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-4);
+    margin-bottom: var(--space-4);
+    font-size: var(--text-sm);
+  }
+  
+  .project-category {
+    background: var(--color-accent);
+    color: white;
+    padding: var(--space-1) var(--space-3);
+    border-radius: var(--radius-sm);
+    font-weight: 600;
+  }
+  
+  .project-year,
+  .project-client {
+    color: var(--color-text-secondary);
+  }
+  
+  .project-title {
+    font-size: var(--text-5xl);
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: var(--space-6);
+    color: var(--color-text-primary);
+  }
+  
+  .project-description {
+    font-size: var(--text-lg);
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+    margin-bottom: var(--space-8);
+  }
+  
+  .project-actions {
+    display: flex;
+    gap: var(--space-4);
+    flex-wrap: wrap;
+  }
+  
+  .project-visual {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .project-image-container {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-xl);
+  }
+  
+  .project-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform var(--transition-slow);
+  }
+  
+  .image-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity var(--transition-normal);
+  }
+  
+  .project-image-container:hover .image-overlay {
+    opacity: 1;
+  }
+  
+  .project-image-container:hover .project-image {
+    transform: scale(1.05);
+  }
+  
+  .overlay-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-2);
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+  }
+  
+  .overlay-icon {
+    font-size: var(--text-3xl);
+  }
+  
+  /* Tech Stack */
+  .tech-stack {
+    background: var(--color-bg-secondary);
+    border-top: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border);
+  }
+  
+  .stack-content {
+    text-align: center;
+  }
+  
+  .stack-title {
+    font-size: var(--text-xl);
+    font-weight: 600;
+    margin-bottom: var(--space-6);
+    color: var(--color-text-primary);
+  }
+  
+  .stack-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--space-3);
+  }
+  
+  .tech-item {
+    background: var(--color-bg-tertiary);
+    color: var(--color-text-primary);
+    padding: var(--space-2) var(--space-4);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--color-border);
+    font-weight: 500;
+    transition: all var(--transition-fast);
+  }
+  
+  .tech-item:hover {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+    transform: translateY(-2px);
+  }
+  
+  /* Project Details */
+  .details-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--space-8);
+  }
+  
+  .detail-section {
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: var(--space-6);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .detail-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, var(--color-accent), var(--color-success));
+  }
+  
+  .detail-title {
+    font-size: var(--text-xl);
+    font-weight: 600;
+    margin-bottom: var(--space-4);
+    color: var(--color-text-primary);
+  }
+  
+  .detail-content {
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+  }
+  
+  .results-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .result-item {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-3);
+    margin-bottom: var(--space-3);
+    color: var(--color-text-secondary);
+    line-height: 1.5;
+  }
+  
+  .result-check {
+    color: var(--color-success);
+    font-weight: bold;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  
+  /* Testimonial */
+  .testimonial-section {
+    grid-column: 1 / -1;
+    background: linear-gradient(135deg, var(--color-bg-tertiary) 0%, var(--color-bg-secondary) 100%);
+  }
+  
+  .testimonial {
+    text-align: center;
+    margin: 0;
+  }
+  
+  .testimonial-text {
+    font-size: var(--text-lg);
+    font-style: italic;
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+    margin-bottom: var(--space-6);
+  }
+  
+  .testimonial-author {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+    font-style: normal;
+  }
+  
+  .testimonial-author strong {
+    color: var(--color-text-primary);
+    font-size: var(--text-base);
+  }
+  
+  .author-role,
+  .author-company {
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+  }
+  
+  /* CTA Section */
+  .project-cta {
+    background: linear-gradient(135deg, var(--color-bg-secondary) 0%, var(--color-bg-primary) 100%);
+    text-align: center;
+  }
+  
+  .cta-title {
+    font-size: var(--text-3xl);
+    font-weight: 700;
+    margin-bottom: var(--space-4);
+    color: var(--color-text-primary);
+  }
+  
+  .cta-description {
+    font-size: var(--text-lg);
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+    margin-bottom: var(--space-8);
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .cta-actions {
+    display: flex;
+    gap: var(--space-4);
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+  /* Mobile styles */
+  @media (max-width: 768px) {
+    .project-hero-content {
+      grid-template-columns: 1fr;
+      gap: var(--space-8);
+      text-align: center;
+    }
+    
+    .project-title {
+      font-size: var(--text-4xl);
+    }
+    
+    .project-meta {
+      justify-content: center;
+    }
+    
+    .details-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .testimonial-section {
+      grid-column: 1;
+    }
+    
+    .stack-grid {
+      gap: var(--space-2);
+    }
+    
+    .tech-item {
+      padding: var(--space-1) var(--space-3);
+      font-size: var(--text-sm);
+    }
+  }
+</style>

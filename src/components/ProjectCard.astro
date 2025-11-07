@@ -1,0 +1,186 @@
+---
+export interface Props {
+  title: string;
+  description: string;
+  image: string;
+  stack: string[];
+  slug: string;
+  featured?: boolean;
+}
+
+const { title, description, image, stack, slug, featured = false } = Astro.props;
+---
+
+<div class={`project-card ${featured ? 'featured' : ''} card reveal`}>
+  <div class="project-image">
+    <img src={image} alt={title} />
+    <div class="project-overlay">
+      <div class="project-actions">
+        <a href={`/projects/${slug}`} class="btn btn-primary">
+          Ver Caso de Estudio
+        </a>
+        <a href={`/projects/${slug}/live`} class="btn btn-secondary" target="_blank" rel="noopener noreferrer">
+          Ver Sitio en Vivo
+        </a>
+      </div>
+    </div>
+  </div>
+  
+  <div class="project-content">
+    <div class="project-header">
+      <h3 class="project-title">{title}</h3>
+      {featured && <span class="featured-badge">Destacado</span>}
+    </div>
+    
+    <p class="project-description">{description}</p>
+    
+    <div class="project-stack">
+      {stack.map((tech) => (
+        <span class="stack-item">{tech}</span>
+      ))}
+    </div>
+  </div>
+</div>
+
+<style>
+  .project-card {
+    position: relative;
+    overflow: hidden;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .project-card.featured {
+    border: 2px solid var(--color-accent);
+  }
+  
+  .project-card.featured::before {
+    background: linear-gradient(90deg, var(--color-accent), var(--color-success));
+    height: 3px;
+  }
+  
+  .project-image {
+    position: relative;
+    width: 100%;
+    height: 250px;
+    overflow: hidden;
+    border-radius: var(--radius-md);
+    margin-bottom: var(--space-4);
+  }
+  
+  .project-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--transition-slow);
+  }
+  
+  .project-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity var(--transition-normal);
+  }
+  
+  .project-card:hover .project-overlay {
+    opacity: 1;
+  }
+  
+  .project-card:hover .project-image img {
+    transform: scale(1.05);
+  }
+  
+  .project-actions {
+    display: flex;
+    gap: var(--space-3);
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .project-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .project-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: var(--space-3);
+  }
+  
+  .project-title {
+    font-size: var(--text-xl);
+    font-weight: 600;
+    margin: 0;
+    color: var(--color-text-primary);
+  }
+  
+  .featured-badge {
+    background: linear-gradient(135deg, var(--color-accent), var(--color-success));
+    color: white;
+    font-size: var(--text-xs);
+    font-weight: 600;
+    padding: var(--space-1) var(--space-2);
+    border-radius: var(--radius-sm);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  
+  .project-description {
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+    margin-bottom: var(--space-4);
+    flex: 1;
+  }
+  
+  .project-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    margin-top: auto;
+  }
+  
+  .stack-item {
+    background: var(--color-bg-tertiary);
+    color: var(--color-text-primary);
+    font-size: var(--text-sm);
+    font-weight: 500;
+    padding: var(--space-1) var(--space-3);
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--color-border);
+    transition: all var(--transition-fast);
+  }
+  
+  .stack-item:hover {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+    transform: translateY(-1px);
+  }
+  
+  /* Mobile styles */
+  @media (max-width: 768px) {
+    .project-image {
+      height: 200px;
+    }
+    
+    .project-actions {
+      flex-direction: column;
+      gap: var(--space-2);
+    }
+    
+    .project-actions .btn {
+      padding: var(--space-2) var(--space-4);
+      font-size: var(--text-sm);
+    }
+  }
+</style>

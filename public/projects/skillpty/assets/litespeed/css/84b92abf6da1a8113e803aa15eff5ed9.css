@@ -1,0 +1,15 @@
+.elementor-5155 .elementor-element.elementor-element-30d85c34 {--display: flex;}
+.elementor-5155 .elementor-element.elementor-element-955d193 {--display: flex;--flex-direction: column;--container-widget-width: 100%;--container-widget-height: initial;--container-widget-flex-grow: 0;--container-widget-align-self: initial;--flex-wrap-mobile: wrap;}
+.elementor-5155 .elementor-element.elementor-element-955d193.e-con {--flex-grow: 0;--flex-shrink: 0;}
+.elementor-5155 .elementor-element.elementor-element-f39d30b {text-align: center;}
+.elementor-5155 .elementor-element.elementor-element-1dc3e58.elementor-element {--align-self: center;}
+.elementor-5155 .elementor-element.elementor-element-992d728 .elementor-button {background-color: #000;fill: #fff;color: #fff;border-style: solid;border-color: #221f1f;}
+.elementor-5155 .elementor-element.elementor-element-992d728 .elementor-button:hover, .elementor-5155 .elementor-element.elementor-element-992d728 .elementor-button:focus {background-color: #fff;color: #000;border-color: #000;}
+.elementor-5155 .elementor-element.elementor-element-992d728 {width: 100%;max-width: 100%;}
+.elementor-5155 .elementor-element.elementor-element-992d728.elementor-element {--flex-grow: 0;--flex-shrink: 0;}
+.elementor-5155 .elementor-element.elementor-element-992d728 .elementor-button-content-wrapper {flex-direction: row-reverse;}
+.elementor-5155 .elementor-element.elementor-element-992d728 .elementor-button .elementor-button-content-wrapper {gap: 15px;}
+.elementor-5155 .elementor-element.elementor-element-992d728 .elementor-button:hover svg, .elementor-5155 .elementor-element.elementor-element-992d728 .elementor-button:focus svg {fill: #000;}
+@media (max-width:1024px) and (min-width:478px) {.elementor-5155 .elementor-element.elementor-element-955d193 {--width: 421px;}}
+@media (max-width:1024px) {.elementor-5155 .elementor-element.elementor-element-992d728 {width: var(--container-widget-width,407.672px);max-width: 407.672px;--container-widget-width: 407.672px;--container-widget-flex-grow: 0;}}
+@media (max-width:477px) {.elementor-5155 .elementor-element.elementor-element-992d728 {width: var(--container-widget-width,317.047px);max-width: 317.047px;--container-widget-width: 317.047px;--container-widget-flex-grow: 0;}}

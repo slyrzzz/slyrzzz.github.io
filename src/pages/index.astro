@@ -1,11 +1,598 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
+import Footer from '../components/Footer.astro';
+import ContactForm from '../components/ContactForm.astro';
+import { getFeaturedProjects } from '../data/projects';
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const featuredProjects = getFeaturedProjects();
 ---
 
-<Layout>
-	<Welcome />
+<Layout title="JARC - Desarrollador Full Stack | Experiencias Web que Convierten">
+  
+  <main class="main-content">
+    <!-- Hero Section -->
+    <section class="hero section" id="inicio">
+      <div class="container">
+        <div class="hero-content reveal">
+          <div class="hero-profile">
+            <div class="profile-image">
+              <img src="/images/profile.svg" alt="Justin Arcila" />
+              <div class="profile-status">
+                <span class="status-dot"></span>
+                Disponible para proyectos
+              </div>
+            </div>
+          </div>
+          
+          <div class="hero-text">
+            <h1 class="hero-title">
+              Justin Arcila
+            </h1>
+            
+            <p class="hero-role">
+              Desarrollador Full Stack Senior
+            </p>
+            
+            <p class="hero-description">
+              Creo experiencias web excepcionales que combinan diseño moderno 
+              con tecnología de vanguardia. Especializado en desarrollo web completo 
+              y soluciones digitales personalizadas.
+            </p>
+            
+            <div class="hero-actions">
+              <a href="#contacto" class="btn btn-primary">
+                <span>Contactar</span>
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                  <path d="M8 0C3.58 0 0 3.58 0 8s3.58 8 8 8 8-3.58 8-8-3.58-8-8-8zm3.707 8.707l-3 3a1 1 0 01-1.414-1.414L9.586 8 7.293 5.707a1 1 0 011.414-1.414l3 3a1 1 0 010 1.414z"/>
+                </svg>
+              </a>
+              <a href="#projects" class="btn btn-secondary">
+                Ver proyectos
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="projects section" id="projects">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-tag">// SELECTED WORKS</span>
+          <h2 class="section-title">Proyectos Destacados</h2>
+          <p class="section-subtitle">
+            Proyectos cuidadosamente seleccionados que demuestran mi enfoque 
+            en la excelencia técnica y el diseño centrado en el usuario.
+          </p>
+        </div>
+        
+        <div class="projects-gallery">
+          {featuredProjects.map((project, index) => (
+            <div class="project-item reveal" key={project.id}>
+              <div class="project-number">{String(index + 1).padStart(2, '0')}</div>
+              <div class="project-image">
+                <img src={project.image} alt={project.title} />
+              </div>
+              <div class="project-info">
+                <h3 class="project-title">{project.title}</h3>
+                <p class="project-description">{project.shortDescription}</p>
+                <div class="project-tech">
+                  {project.stack.slice(0, 3).map((tech) => (
+                    <span class="tech-tag" key={tech}>{tech}</span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services section" id="servicios">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-tag">// SERVICES</span>
+          <h2 class="section-title">Lo que puedo crear para ti</h2>
+          <p class="section-subtitle">
+            Desde conceptos hasta productos terminados, ofrezco soluciones 
+            completas de desarrollo web y software personalizado.
+          </p>
+        </div>
+        
+        <div class="services-grid">
+          <div class="service-card reveal">
+            <div class="service-icon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M4 6h16v2H4zm0 5h16v2H4zm0 5h16v2H4z"/>
+              </svg>
+            </div>
+            <h3 class="service-title">Desarrollo Web Frontend</h3>
+            <p class="service-description">
+              Interfaces modernas y responsivas usando React, Vue.js, Astro y las últimas tecnologías web.
+            </p>
+            <ul class="service-features">
+              <li>React & Next.js</li>
+              <li>Vue.js & Nuxt.js</li>
+              <li>Astro & TypeScript</li>
+              <li>Tailwind CSS</li>
+            </ul>
+          </div>
+
+          <div class="service-card reveal">
+            <div class="service-icon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+              </svg>
+            </div>
+            <h3 class="service-title">Desarrollo Backend</h3>
+            <p class="service-description">
+              APIs robustas y bases de datos optimizadas con Node.js, PHP y sistemas de gestión modernos.
+            </p>
+            <ul class="service-features">
+              <li>Node.js & Express</li>
+              <li>PHP & Laravel</li>
+              <li>MySQL & MongoDB</li>
+              <li>API REST & GraphQL</li>
+            </ul>
+          </div>
+
+          <div class="service-card reveal">
+            <div class="service-icon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M13 3c-4.97 0-9 4.03-9 9H1l3.89 3.89.07.14L9 12H6c0-3.87 3.13-7 7-7s7 3.13 7 7-3.13 7-7 7c-1.93 0-3.68-.79-4.94-2.06l-1.42 1.42A8.954 8.954 0 0013 21c4.97 0 9-4.03 9-9s-4.03-9-9-9z"/>
+              </svg>
+            </div>
+            <h3 class="service-title">Aplicaciones Web Completas</h3>
+            <p class="service-description">
+              Soluciones full-stack personalizadas desde la concepción hasta el despliegue en producción.
+            </p>
+            <ul class="service-features">
+              <li>Arquitectura escalable</li>
+              <li>UX/UI optimizado</li>
+              <li>SEO & Performance</li>
+              <li>Mantenimiento</li>
+            </ul>
+          </div>
+
+          <div class="service-card reveal">
+            <div class="service-icon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+              </svg>
+            </div>
+            <h3 class="service-title">WordPress & CMS</h3>
+            <p class="service-description">
+              Sitios web profesionales con WordPress, temas personalizados y funcionalidades avanzadas.
+            </p>
+            <ul class="service-features">
+              <li>Temas personalizados</li>
+              <li>Plugins a medida</li>
+              <li>WooCommerce</li>
+              <li>Optimización WP</li>
+            </ul>
+          </div>
+
+          <div class="service-card reveal">
+            <div class="service-icon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M9 11H7v6h2v-6zm4 0h-2v6h2v-6zm4 0h-2v6h2v-6zm2.5-9H15v2h4.5v16h-15V4H9V2H4.5C3.67 2 3 2.67 3 3.5V20.5c0 .83.67 1.5 1.5 1.5h15c.83 0 1.5-.67 1.5-1.5V3.5c0-.83-.67-1.5-1.5-1.5z"/>
+              </svg>
+            </div>
+            <h3 class="service-title">Consultoría Técnica</h3>
+            <p class="service-description">
+              Asesoramiento especializado en arquitectura, optimización y migración de proyectos existentes.
+            </p>
+            <ul class="service-features">
+              <li>Auditoría de código</li>
+              <li>Optimización performance</li>
+              <li>Migración de proyectos</li>
+              <li>Arquitectura escalable</li>
+            </ul>
+          </div>
+
+          <div class="service-card reveal">
+            <div class="service-icon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+              </svg>
+            </div>
+            <h3 class="service-title">Add-ons & Extensiones</h3>
+            <p class="service-description">
+              Extensiones personalizadas y add-ons para potenciar proyectos existentes con nuevas funcionalidades.
+            </p>
+            <ul class="service-features">
+              <li>Extensiones WordPress</li>
+              <li>Módulos personalizados</li>
+              <li>Integraciones API</li>
+              <li>Automatizaciones</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact section" id="contacto">
+      <div class="container">
+        <div class="section-header reveal">
+          <h2 class="section-title">Hagamos crecer tu negocio juntos</h2>
+          <p class="section-subtitle">
+            ¿Tienes una idea? ¿Necesitas mejorar tu presencia online? 
+            Hablemos sobre cómo puedo ayudarte a <strong>convertir tu visión en resultados</strong>.
+          </p>
+        </div>
+        
+        <ContactForm />
+      </div>
+    </section>
+  </main>
+  
+  <Footer />
 </Layout>
+
+<style>
+  .main-content {
+    background: var(--color-bg-primary);
+  }
+  
+  .hero {
+    padding: var(--space-16) 0 var(--space-12) 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    text-align: center;
+  }
+  
+  .hero .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto;
+    gap: var(--space-4);
+  }
+  
+  .hero-profile {
+    position: relative;
+  }
+  
+  .profile-image {
+    position: relative;
+    width: 80px;
+    height: 80px;
+    margin: 0 auto var(--space-3);
+  }
+  
+  .profile-image img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--color-border);
+    transition: all 0.3s ease;
+  }
+  
+  .profile-image:hover img {
+    border-color: var(--color-accent);
+    transform: scale(1.05);
+  }
+  
+  .profile-status {
+    position: absolute;
+    bottom: 5px;
+    right: -10px;
+    background: var(--color-bg-card);
+    border: 2px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: var(--space-1) var(--space-2);
+    font-size: var(--text-xs);
+    color: var(--color-text-secondary);
+    display: flex;
+    align-items: center;
+    gap: var(--space-1);
+    white-space: nowrap;
+    box-shadow: var(--shadow-md);
+  }
+  
+  .status-dot {
+    width: 8px;
+    height: 8px;
+    background: var(--color-success);
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+  
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+  }
+  
+  .hero-title {
+    font-size: var(--text-4xl);
+    font-weight: 700;
+    margin-bottom: var(--space-2);
+    background: linear-gradient(135deg, var(--color-text-primary) 0%, var(--color-accent) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  .hero-role {
+    font-size: var(--text-lg);
+    color: var(--color-accent);
+    font-weight: 600;
+    margin-bottom: var(--space-3);
+  }
+  
+  .hero-description {
+    font-size: var(--text-base);
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+    margin-bottom: var(--space-6);
+    max-width: 500px;
+  }
+  
+  .hero-actions {
+    display: flex;
+    gap: var(--space-3);
+    margin-bottom: var(--space-4);
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .section-tag {
+    font-family: 'Courier New', monospace;
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+    margin-bottom: var(--space-4);
+    display: block;
+    text-align: center;
+  }
+  
+  /* Asegurar que todos los headers de sección estén centrados */
+  .section-header {
+    text-align: center !important;
+    margin-bottom: var(--space-16);
+    max-width: 900px;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+  
+  .section-title {
+    text-align: center !important;
+    margin: 0 auto var(--space-4) auto;
+  }
+  
+  .section-subtitle {
+    text-align: center !important;
+    margin: 0 auto;
+    max-width: 700px;
+  }
+  
+  .projects-gallery {
+    display: grid;
+    gap: var(--space-8);
+    margin-top: var(--space-16);
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  /* Asegurar que las secciones estén centradas */
+  .projects.section,
+  .services.section,
+  .contact.section {
+    text-align: center;
+  }
+  
+  .projects .container,
+  .services .container,
+  .contact .container {
+    text-align: center;
+  }
+  
+  .project-item {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: var(--space-8);
+    align-items: center;
+    padding: var(--space-8);
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    transition: all 0.3s ease;
+    max-width: 950px;
+    margin: 0 auto;
+  }
+  
+  .project-item:hover {
+    border-color: var(--color-accent);
+    transform: translateY(-4px);
+  }
+  
+  .project-number {
+    font-size: var(--text-3xl);
+    font-weight: 700;
+    color: var(--color-accent);
+    font-family: 'Courier New', monospace;
+  }
+  
+  .project-image {
+    position: relative;
+    width: 400px;
+    height: 250px;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+  }
+  
+  .project-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+  
+  .project-item:hover .project-image img {
+    transform: scale(1.05);
+  }
+  
+  .project-info {
+    padding: var(--space-4) 0;
+  }
+  
+  .project-title {
+    font-size: var(--text-2xl);
+    font-weight: 700;
+    margin-bottom: var(--space-3);
+    color: var(--color-text-primary);
+  }
+  
+  .project-description {
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-4);
+    line-height: 1.6;
+  }
+  
+  .project-tech {
+    display: flex;
+    gap: var(--space-2);
+    flex-wrap: wrap;
+  }
+  
+  .tech-tag {
+    background: var(--color-bg-tertiary);
+    color: var(--color-text-secondary);
+    padding: var(--space-1) var(--space-3);
+    border-radius: var(--radius-sm);
+    font-size: var(--text-sm);
+    border: 1px solid var(--color-border);
+  }
+  
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: var(--space-6);
+    margin-top: var(--space-16);
+    max-width: 1100px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .service-card {
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: var(--space-8);
+    transition: all 0.3s ease;
+  }
+  
+  .service-card:hover {
+    border-color: var(--color-accent);
+    transform: translateY(-4px);
+  }
+  
+  .service-icon {
+    width: 60px;
+    height: 60px;
+    background: var(--color-accent);
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: var(--space-6);
+    color: white;
+  }
+  
+  .service-title {
+    font-size: var(--text-xl);
+    font-weight: 600;
+    margin-bottom: var(--space-4);
+    color: var(--color-text-primary);
+  }
+  
+  .service-description {
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+    margin-bottom: var(--space-6);
+  }
+  
+  .service-features {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .service-features li {
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-2);
+    position: relative;
+    padding-left: var(--space-4);
+  }
+  
+  .service-features li:before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: var(--color-accent);
+    font-weight: bold;
+  }
+  
+  @media (max-width: 768px) {
+    .hero-title {
+      font-size: var(--text-3xl);
+    }
+    
+    .hero-actions {
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      gap: var(--space-3);
+    }
+    
+    .profile-image {
+      width: 70px;
+      height: 70px;
+    }
+    
+    .profile-status {
+      font-size: 10px;
+      padding: 4px 8px;
+      right: -5px;
+      bottom: 0;
+    }
+    
+    .project-item {
+      grid-template-columns: 1fr;
+      text-align: center;
+      max-width: 100%;
+      margin: 0;
+    }
+    
+    .project-image {
+      width: 100%;
+      max-width: 400px;
+      margin: 0 auto;
+    }
+    
+    .profile-status {
+      position: static;
+      margin-top: var(--space-4);
+    }
+    
+    .services-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
