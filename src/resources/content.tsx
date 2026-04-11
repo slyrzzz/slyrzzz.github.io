@@ -80,7 +80,7 @@ const home: Home = {
   },
   subline: (
     <>
-      Soy Justin, desarrollador web especializado en transformar ideas en plataformas de alto <Text as="span" size="xl" weight="strong">rendimiento que no solo funcionan, sino que venden</Text>
+      Soy Justin, desarrollador web especializado en transformar ideas en plataformas de <Text as="span" size="xl" weight="strong">alto rendimiento que no solo funcionan, sino que venden</Text>
     </>
   ),
 };
@@ -240,7 +240,7 @@ const work: Work = {
   path: "/work",
   label: "Proyectos",
   title: `Proyectos – ${person.name}`,
-  description: `Design and dev projects by ${person.name}`,
+  description: `Transformando visiones de negocio en experiencias digitales eficientes y escalables.`,
   // Create new project pages by adding a new .mdx file to app/blog/posts
   // All projects will be listed on the /home and /work routes
 };

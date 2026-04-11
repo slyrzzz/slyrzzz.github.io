@@ -1,4 +1,4 @@
-import { Column, Heading, Meta, Schema } from "@once-ui-system/core";
+import { Column, Heading, Meta, Schema, Text } from "@once-ui-system/core";
 import { baseURL, about, person, work } from "@/resources";
 import { Projects } from "@/components/work/Projects";
 
@@ -28,9 +28,17 @@ export default function Work() {
           image: `${baseURL}${person.avatar}`,
         }}
       />
-      <Heading marginBottom="l" variant="heading-strong-xl" align="center">
+      <Heading marginBottom="s" variant="heading-strong-xl" align="center">
         {work.title}
       </Heading>
+      <Text
+        marginBottom="m"
+        align="center"
+        variant="body-default-m"
+        onBackground="neutral-weak"
+      >
+        Transformando visiones de negocio en experiencias digitales eficientes y escalables.
+      </Text>
       <Projects />
     </Column>
   );
