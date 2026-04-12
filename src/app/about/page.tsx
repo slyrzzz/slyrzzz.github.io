@@ -8,7 +8,6 @@ import {
   Media,
   Tag,
   Text,
-  Text,
   Schema,
   Row,
 } from "@once-ui-system/core";
