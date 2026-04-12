@@ -1,7 +1,6 @@
 import { notFound } from "next/navigation";
 import { getPosts } from "@/utils/utils";
 import {
-  Meta,
   Schema,
   AvatarGroup,
   Button,
@@ -16,7 +15,7 @@ import {
   Avatar,
   Line,
 } from "@once-ui-system/core";
-import { baseURL, about, person, work } from "@/resources";
+import { baseURL, about, person, work, home } from "@/resources";
 import { formatDate } from "@/utils/formatDate";
 import { ScrollToHash, CustomMDX } from "@/components";
 import { Metadata } from "next";
@@ -44,13 +43,21 @@ export async function generateMetadata({
 
   if (!post) return {};
 
-  return Meta.generate({
+  const projectImage = post.metadata.images && post.metadata.images.length > 0 ? post.metadata.images[0] : home.image;
+
+  return {
     title: post.metadata.title,
     description: post.metadata.summary,
-    baseURL: baseURL,
-    image: post.metadata.image || `/api/og/generate?title=${post.metadata.title}`,
-    path: `${work.path}/${post.slug}`,
-  });
+    alternates: {
+      canonical: `${work.path}/${post.slug}`,
+    },
+    openGraph: {
+      title: post.metadata.title,
+      description: post.metadata.summary,
+      url: `${work.path}/${post.slug}`,
+      images: [{ url: projectImage }],
+    },
+  };
 }
 
 export default async function Project({
@@ -85,7 +92,7 @@ export default async function Project({
         datePublished={post.metadata.publishedAt}
         dateModified={post.metadata.publishedAt}
         image={
-          post.metadata.image || `/api/og/generate?title=${encodeURIComponent(post.metadata.title)}`
+          post.metadata.images && post.metadata.images.length > 0 ? post.metadata.images[0] : home.image
         }
         author={{
           name: person.name,

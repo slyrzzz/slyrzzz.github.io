@@ -8,24 +8,28 @@ import {
   Media,
   Tag,
   Text,
-  Meta,
+  Text,
   Schema,
   Row,
 } from "@once-ui-system/core";
+import { Metadata } from "next";
 import { baseURL, about, person, social } from "@/resources";
 import TableOfContents from "@/components/about/TableOfContents";
 import styles from "@/components/about/about.module.scss";
 import React from "react";
 
-export async function generateMetadata() {
-  return Meta.generate({
+export const metadata: Metadata = {
+  title: about.title,
+  description: about.description,
+  alternates: {
+    canonical: about.path,
+  },
+  openGraph: {
     title: about.title,
     description: about.description,
-    baseURL: baseURL,
-    image: `/api/og/generate?title=${encodeURIComponent(about.title)}`,
-    path: about.path,
-  });
-}
+    url: about.path,
+  },
+};
 
 export default function About() {
   const structure = [
@@ -58,7 +62,6 @@ export default function About() {
         title={about.title}
         description={about.description}
         path={about.path}
-        image={`/api/og/generate?title=${encodeURIComponent(about.title)}`}
         author={{
           name: person.name,
           url: `${baseURL}${about.path}`,

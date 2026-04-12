@@ -13,6 +13,19 @@ export const metadata: Metadata = {
   metadataBase: new URL(baseURL || "https://jromana.com"),
   title: home.title,
   description: home.description,
+  keywords: [
+    'Desarrollador Web Panamá', 
+    'Web Developer Panama', 
+    'Next.js Engineer', 
+    'React', 
+    'Consultor Técnico', 
+    'Desarrollo Frontend', 
+    'Sitios Web de Alto Rendimiento', 
+    'Justin Romaña', 
+    'Tech Consultant',
+    'Portafolio de Desarrollo',
+    'E-commerce'
+  ],
   openGraph: {
     title: home.title,
     description: home.description,
