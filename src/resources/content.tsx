@@ -47,7 +47,7 @@ const home: Home = {
   image: "/images/og/home.jpg",
   label: "Home",
   title: "Justin Romaña | Soluciones Digitales 🚀",
-  description: `Portfolio website showcasing my work as a ${person.role}`,
+  description: `Desarrollador web especializado en transformar ideas en plataformas de alto rendimiento que no solo funcionan, sino que venden.`,
   headline: <>Código que impulsa resultados de negocio</>,
   featured: {
     display: true,

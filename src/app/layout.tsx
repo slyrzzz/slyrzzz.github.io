@@ -4,27 +4,49 @@ import "@/resources/custom.css";
 
 import classNames from "classnames";
 
-import {
-  Background,
-  Column,
-  Flex,
-  Meta,
-  opacity,
-  RevealFx,
-  SpacingToken,
-} from "@once-ui-system/core";
+import { Metadata } from "next";
+import { Background, Column, Flex, opacity, RevealFx, SpacingToken } from "@once-ui-system/core";
 import { Footer, Header, RouteGuard, Providers } from "@/components";
 import { baseURL, effects, fonts, style, dataStyle, home } from "@/resources";
 
-export async function generateMetadata() {
-  return Meta.generate({
+export const metadata: Metadata = {
+  metadataBase: new URL(baseURL || "https://jromana.com"),
+  title: home.title,
+  description: home.description,
+  openGraph: {
     title: home.title,
     description: home.description,
-    baseURL: baseURL,
-    path: home.path,
-    image: home.image,
-  });
-}
+    url: home.path,
+    siteName: 'Justin Romaña - Portfolio',
+    locale: 'es_PA',
+    type: 'website',
+    images: [
+      {
+        url: home.image,
+        width: 1200,
+        height: 630,
+        alt: 'Justin Romaña | Soluciones Digitales',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: home.title,
+    description: home.description,
+    images: [home.image],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+};
 
 export default async function RootLayout({
   children,
