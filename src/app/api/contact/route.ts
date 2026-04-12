@@ -6,6 +6,9 @@ const mailersend = new MailerSend({
 });
 
 export async function POST(request: Request) {
+  // --- DEBUGGING LINE FOR VERCEL ---
+  console.log("Estado de la API KEY en Vercel:", process.env.MAILERSEND_API_KEY ? `Existe (Longitud: ${process.env.MAILERSEND_API_KEY.length})` : "VACIA O NO DEFINIDA");
+  
   try {
     const { email, firstName, lastName } = await request.json();
 
