@@ -5,18 +5,16 @@ import { Button, Heading, Input, Text, Background, Column, Row } from "@once-ui-
 import { opacity, SpacingToken } from "@once-ui-system/core";
 import { useState } from "react";
 
-function debounce<T extends (...args: any[]) => void>(func: T, delay: number): T {
-  let timeout: ReturnType<typeof setTimeout>;
-  return ((...args: Parameters<T>) => {
-    clearTimeout(timeout);
-    timeout = setTimeout(() => func(...args), delay);
-  }) as T;
-}
+
 
 export const Mailchimp: React.FC<React.ComponentProps<typeof Column>> = ({ ...flex }) => {
+  const [firstName, setFirstName] = useState<string>("");
+  const [lastName, setLastName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [error, setError] = useState<string>("");
   const [touched, setTouched] = useState<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(false);
+  const [success, setSuccess] = useState<boolean>(false);
 
   const validateEmail = (email: string): boolean => {
     if (email === "") {
@@ -31,19 +29,53 @@ export const Mailchimp: React.FC<React.ComponentProps<typeof Column>> = ({ ...fl
     const value = e.target.value;
     setEmail(value);
 
-    if (!validateEmail(value)) {
-      setError("Please enter a valid email address.");
-    } else {
+    // Si había un error pero ahora es válido, lo quitamos sutilmente mientras escribe
+    if (error && validateEmail(value)) {
       setError("");
     }
   };
 
-  const debouncedHandleChange = debounce(handleChange, 2000);
-
   const handleBlur = () => {
     setTouched(true);
     if (!validateEmail(email)) {
-      setError("Please enter a valid email address.");
+      setError("Por favor ingresa un correo electrónico válido.");
+    }
+  };
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (!validateEmail(email) || !email) {
+      setError("Por favor ingresa un correo válido.");
+      return;
+    }
+    setLoading(true);
+    setError("");
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ firstName, lastName, email }),
+      });
+
+      const responseData = await response.json();
+
+      if (response.ok) {
+        setSuccess(true);
+        setFirstName("");
+        setLastName("");
+        setEmail("");
+        // Resetea el success message después de unos segundos
+        setTimeout(() => setSuccess(false), 5000);
+      } else {
+        setError(responseData.error || "Hubo un error al enviar el correo.");
+        setSuccess(false);
+      }
+    } catch (err) {
+      setError("Error de conexión interno. Revisa la consola.");
+      setSuccess(false);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -118,67 +150,56 @@ export const Mailchimp: React.FC<React.ComponentProps<typeof Column>> = ({ ...fl
           width: "100%",
           display: "flex",
           justifyContent: "center",
+          zIndex: 1,
         }}
-        action={mailchimp.action}
-        method="post"
-        id="mc-embedded-subscribe-form"
-        name="mc-embedded-subscribe-form"
+        onSubmit={handleSubmit}
+        id="contact-form"
+        name="contact-form"
       >
-        <Row
-          id="mc_embed_signup_scroll"
-          fillWidth
-          maxWidth={24}
-          s={{ direction: "column" }}
-          gap="8"
-        >
+        <Column fillWidth maxWidth={24} gap="8">
+          <Row fillWidth gap="8">
+            <Input
+              id="contact-firstName"
+              name="firstName"
+              type="text"
+              placeholder="Nombre"
+              required
+              value={firstName}
+              onChange={(e) => setFirstName(e.target.value)}
+            />
+            <Input
+              id="contact-lastName"
+              name="lastName"
+              type="text"
+              placeholder="Apellido"
+              required
+              value={lastName}
+              onChange={(e) => setLastName(e.target.value)}
+            />
+          </Row>
           <Input
-            formNoValidate
-            id="mce-EMAIL"
-            name="EMAIL"
+            id="contact-email"
+            name="email"
             type="email"
             placeholder="Tu correo electrónico"
             required
-            onChange={(e) => {
-              if (error) {
-                handleChange(e);
-              } else {
-                debouncedHandleChange(e);
-              }
-            }}
+            value={email}
+            onChange={handleChange}
             onBlur={handleBlur}
             errorMessage={error}
           />
-          <div style={{ display: "none" }}>
-            <input
-              type="checkbox"
-              readOnly
-              name="group[3492][1]"
-              id="mce-group[3492]-3492-0"
-              value=""
-              checked
-            />
-          </div>
-          <div id="mce-responses" className="clearfalse">
-            <div className="response" id="mce-error-response" style={{ display: "none" }}></div>
-            <div className="response" id="mce-success-response" style={{ display: "none" }}></div>
-          </div>
-          <div aria-hidden="true" style={{ position: "absolute", left: "-5000px" }}>
-            <input
-              type="text"
-              readOnly
-              name="b_c1a5a210340eb6c7bff33b2ba_0462d244aa"
-              tabIndex={-1}
-              value=""
-            />
-          </div>
-          <div className="clear">
-            <Row height="48" vertical="center">
-              <Button id="mc-embedded-subscribe" value="Enviar" size="m" fillWidth>
-                Enviar
-              </Button>
-            </Row>
-          </div>
-        </Row>
+          <Row height="48" vertical="center" marginTop="4">
+            <Button
+              type="submit"
+              disabled={loading || success}
+              value="Enviar"
+              size="m"
+              fillWidth
+            >
+              {loading ? "Enviando..." : success ? "¡Enviado con éxito!" : "Enviar"}
+            </Button>
+          </Row>
+        </Column>
       </form>
     </Column>
   );
