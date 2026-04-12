@@ -44,7 +44,7 @@ const social: Social = [
 
 const home: Home = {
   path: "/",
-  image: "/images/og/home.jpg",
+  image: "/images/og/banner-v2.jpg",
   label: "Home",
   title: "Justin Romaña | Soluciones Digitales 🚀",
   description: `Desarrollador web especializado en transformar ideas en plataformas de alto rendimiento que no solo funcionan, sino que venden.`,
