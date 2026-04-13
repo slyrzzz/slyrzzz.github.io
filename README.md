@@ -1,91 +1,58 @@
-# Magic Portfolio
+# Justin Romaña - Portfolio & Tech Consultant
 
-Magic Portfolio is a simple, clean, beginner-friendly portfolio template. It supports an MDX-based content system for projects and blog posts, an about / CV page and a gallery.
+Bienvenido a mi portafolio profesional. Soy **Justin Romaña**, Senior Web Developer & Tech Consultant especializado en transformar ideas en plataformas de alto rendimiento que no solo funcionan, sino que venden.
 
-View the demo [here](https://demo.magic-portfolio.com).
+![Justin Romaña Portfolio](/images/opengraph.png)
 
-![Magic Portfolio](public/images/og/home.jpg)
+## 🚀 Perfil Profesional
 
-## Getting started
+Soy un desarrollador con enfoque en resultados de negocio, experto en sitios a medida, landing pages y plataformas complejas como marketplaces. Mi objetivo es crear soluciones digitales que impulsen el crecimiento y la eficiencia.
 
-**1. Clone the repository**
-```
-git clone https://github.com/once-ui-system/magic-portfolio.git
-```
+### Habilidades Técnicas
+- **Frontend**: Next.js, React, TypeScript, Tailwind CSS.
+- **Backend & DB**: Go, SQL, Integración de APIs, JavaScript.
+- **DevOps**: Vercel, Docker, Ubuntu, GitHub.
+- **Estrategia**: SEO, Gestión de Stakeholders.
 
-**2. Install dependencies**
-```
-npm install
-```
+## 📁 Proyectos Destacados
 
-**3. Run dev server**
-```
-npm run dev
-```
+He liderado y desarrollado diversos productos digitales de alto impacto, incluyendo:
+- **Ónice & Nowink**: E-commerce y marketplaces de alto rendimiento.
+- **SkillPTY**: Marketplace para conexión de servicios.
+- **Guder.pro**: Plataforma compleja para gestión de torneos en tiempo real.
+- **Panacheck.app**: Optimización de bases de datos de alta velocidad.
+- **Mario Spinali Portfolio**: Diseño y desarrollo de portafolio para figuras públicas.
 
-**4. Edit config**
-```
-src/resources/once-ui.config.js
-```
+## 🛠️ Desarrollo
 
-**5. Edit content**
-```
-src/resources/content.js
-```
+Este portafolio está construido con:
+- **Framework**: [Next.js 15+](https://nextjs.org)
+- **UI System**: [Once UI](https://once-ui.com)
+- **Contenido**: MDX (Markdown for component-era)
+- **Estilo**: CSS Vanilla / SCSS Moderno
 
-**6. Create blog posts / projects**
-```
-Add a new .mdx file to src/app/blog/posts or src/app/work/projects
-```
+### Configuración Local
 
-Magic Portfolio was built with [Once UI](https://once-ui.com) for [Next.js](https://nextjs.org). It requires Node.js v18.17+.
+1.  **Instalar dependencias**:
+    ```bash
+    npm install
+    ```
+2.  **Correr servidor de desarrollo**:
+    ```bash
+    npm run dev
+    ```
+3.  **Construir para producción**:
+    ```bash
+    npm run build
+    ```
 
-## Documentation
+## 📬 Contacto
 
-Docs available at: [docs.once-ui.com](https://docs.once-ui.com/docs/magic-portfolio/quick-start)
+¿Tienes un proyecto en mente? ¡Hablemos!
 
-## Features
+- **LinkedIn**: [jarcpty](https://www.linkedin.com/in/jarcpty/)
+- **WhatsApp**: [+507 6141-6952](https://wa.me/50761416952)
+- **Email**: [jr@jromana.com](mailto:jr@jromana.com)
 
-### Once UI
-- All tokens, components & features of [Once UI](https://once-ui.com)
-
-### SEO
-- Automatic open-graph and X image generation with next/og
-- Automatic schema and metadata generation based on the content file
-
-### Design
-- Responsive layout optimized for all screen sizes
-- Timeless design without heavy animations and motion
-- Endless customization options through [data attributes](https://once-ui.com/docs/theming)
-
-### Content
-- Render sections conditionally based on the content file
-- Enable or disable pages for blog, work, gallery and about / CV
-- Generate and display social links automatically
-- Set up password protection for URLs
-
-### Localization
-- A localized, earlier version of Magic Portfolio is available with the next-intl library
-- To use localization, switch to the 'i18n' branch
-
-## Creators
-
-Lorant One: [Threads](https://www.threads.net/@lorant.one) / [LinkedIn](https://www.linkedin.com/in/lorant-one/)
-
-## Get involved
-
-- Join the Design Engineers Club on [Discord](https://discord.com/invite/5EyAQ4eNdS) and share your project with us!
-- Deployed your docs? Share it on the [Once UI Hub](https://once-ui.com/hub) too! We feature our favorite apps on our landing page.
-
-## License
-
-Distributed under the CC BY-NC 4.0 License.
-- Attribution is required.
-- Commercial usage is not allowed.
-- You can extend the license to [Dopler CC](https://dopler.app/license) by purchasing a [Once UI Pro](https://once-ui.com/pricing) license.
-
-See `LICENSE.txt` for more information.
-
-## Deploy with Vercel
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fonce-ui-system%2Fmagic-portfolio&project-name=portfolio&repository-name=portfolio&redirect-url=https%3A%2F%2Fgithub.com%2Fonce-ui-system%2Fmagic-portfolio&demo-title=Magic%20Portfolio&demo-description=Showcase%20your%20designers%20or%20developer%20portfolio&demo-url=https%3A%2F%2Fdemo.magic-portfolio.com&demo-image=%2F%2Fraw.githubusercontent.com%2Fonce-ui-system%2Fmagic-portfolio%2Fmain%2Fpublic%2Fimages%2Fog%2Fhome.jpg)
+---
+© 2026 Justin Romaña. Todos los derechos reservados.
